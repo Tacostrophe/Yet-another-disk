@@ -22,7 +22,7 @@
 Клонировать репозиторий:
 
 ```
-git clone https://github.com/Tacostrophe/yet_another_disk.git
+git clone https://github.com/Tacostrophe/Yet-another-disk.git
 ```
 Перейти в папку enrollment/infra/
 
