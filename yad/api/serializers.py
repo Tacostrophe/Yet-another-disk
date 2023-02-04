@@ -101,7 +101,9 @@ class ImportsSerializer(serializers.Serializer):
                 parent = parent[0]
                 # Родителем элемента может быть только папка
                 if parent.type != Item.Types.FOLDER:
-                    raise ValidationError({"parentId": "Only folder can be parent"})
+                    raise ValidationError(
+                        {"parentId": "Only folder can be parent"}
+                    )
             else:
                 parent = None
             Item.objects.update_or_create(
