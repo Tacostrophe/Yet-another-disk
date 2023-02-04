@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from . import models\
+from . import models
 
-EMPTY = '-пусто-'
+EMPTY = "-пусто-"
 
 
 @admin.register(models.Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('id', 'type', 'url', 'date', 'parent', 'size')
-    readonly_fields = ('id', )
+    list_display = ("id", "type", "url", "date", "parent", "size")
+    readonly_fields = ("id",)
     empty_value_display = EMPTY

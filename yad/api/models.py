@@ -8,7 +8,7 @@ def calc_folder_size(item):
     size = 0
     # Проверка для удаления
     if children.exists():
-        size = children.aggregate(sum_size=models.Sum('size'))['sum_size']
+        size = children.aggregate(sum_size=models.Sum("size"))["sum_size"]
     item.size = size
     item.save()
     # if item.parent:
@@ -16,10 +16,11 @@ def calc_folder_size(item):
 
 
 class Item(models.Model):
-    '''Модель файла/папкИ'''
+    """Модель файла/папкИ"""
+
     class Types(models.TextChoices):
-        FILE = 'FILE'
-        FOLDER = 'FOLDER'
+        FILE = "FILE"
+        FOLDER = "FOLDER"
 
     id = models.UUIDField(
         primary_key=True,
@@ -40,13 +41,12 @@ class Item(models.Model):
     )
     date = models.DateTimeField()
     parent = models.ForeignKey(
-        'self',
+        "self",
         on_delete=models.CASCADE,
-        related_name='folder',
+        related_name="folder",
         null=True,
         blank=True,
         default=None,
-        # validators=(validate_parent,)
     )
     size = models.PositiveIntegerField(
         null=True,
@@ -68,4 +68,4 @@ class Item(models.Model):
             calc_folder_size(parent)
 
     def __str__(self):
-        return f'{self.type} - {self.id}'
+        return f"{self.type} - {self.id}"
