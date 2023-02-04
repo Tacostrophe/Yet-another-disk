@@ -3,14 +3,11 @@ import os
 from http import HTTPStatus
 
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.utils import timezone
 from rest_framework.test import APIClient
 
 from api.models import Item
-
-User = get_user_model()
 
 
 def setUpModule():
@@ -20,7 +17,9 @@ def setUpModule():
     URL_DELETE = "/delete"
     URL_IMPORTS = "/imports"
     URL_UPDATES = "/updates"
-    TEST_DATA_DIR = os.path.join(settings.BASE_DIR, "api", "tests", "test_data")
+    TEST_DATA_DIR = os.path.join(
+        settings.BASE_DIR, "api", "tests", "test_data"
+    )
     TEST_FOLDER_ID = "069cb8d7-bbdd-47d3-ad8f-82ef4c269df2"
     DATETIME_FORMAT = settings.REST_FRAMEWORK.get("DATETIME_FORMAT")
 
